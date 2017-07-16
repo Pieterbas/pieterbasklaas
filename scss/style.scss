@@ -1,0 +1,51 @@
+body {
+  background-color: white;
+  font-family: "HelveticaNeue-Light",
+    "Helvetica Neue Light",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    "Lucida Grande",
+    sans-serif;
+  font-weight: 100;
+
+  font-color: #111;
+}
+
+$offset: -3px;
+$count:100;
+$duration: 5;
+
+@keyframes wave {
+  from {
+    transform: translateY(0);
+    color: #000000;
+  }
+  to {
+    transform: translateY($offset);
+  }
+}
+
+.wavetext {
+  margin-top: 10em;
+  text-align: center;
+}
+
+.wavetext span {
+  display: inline-block;
+  font-family: "Fredoka One", sans-serif;
+  font-size: 36px;
+
+  animation-duration: #{$duration}s;
+  animation-name: wave;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@for $i from 0 to $count {
+  .wavetext :nth-child(#{$count}n + #{$i}) {
+    animation-delay: -#{($count - $i) * 2 * $duration / $count }s;
+
+    color: #8F8E94;
+  }
+}
